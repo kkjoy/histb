@@ -1,4 +1,5 @@
 # install aria2
+install_package 00-nginx.sh
 
 cat << EOF | LC_ALL=C LANGUAGE=C LANG=C chroot ${ROOTFS}
 apt-get install -y aria2
@@ -18,8 +19,7 @@ chown nobody:nogroup ${ROOTFS}/home/ubuntu/downloads
 unzip -o -q ${DOWNLOAD_PATH}/${aria2_file} -d ${WWW_PATH}/ariang
 touch ${ROOTFS}/usr/local/aria2/aria2.session
 chmod 777 ${ROOTFS}/usr/local/aria2/aria2.session
-# cp -a pre_files/aria2.conf ${ROOTFS}/usr/local/aria2
-# cp -a pre_files/aria2c.service ${ROOTFS}/etc/systemd/system
+chmod 755 ${ROOTFS}/usr/local/bin/update-tracker.sh
 chmod 644 ${ROOTFS}/etc/systemd/system/aria2c.service
 
 cat << EOF | chroot ${ROOTFS}

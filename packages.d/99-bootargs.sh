@@ -1,29 +1,14 @@
 # choose mv100 or mv200
-echo "
-1. mv100
-2. mv200
-3. mv300
-"
-while :; do
-read -p "你想要定制哪个版本？ " CHOOSE
-case $CHOOSE in
-    1)
-        bootargs="mv100"
-    break
-    ;;
-    2)
-        bootargs="mv200"
-    break
-    ;;
-    3)
-        bootargs="mv300"
-    break
-    ;;
-esac
-done
+bootargs=$(awk 'NR==1' ${WORK_PATH}/target 2> /dev/null)
+if [ "$bootargs" = "" ]; then
+    _exit 1 "target not found"
+fi
+
 cd ${WORK_PATH}
-echo "hi3798$bootargs" > target
-cp -a pre_files/bootargs/bootargs4-$bootargs.bin ${ROOTFS}/usr/bin/bootargs4.bin
-cp -a pre_files/bootargs/boot4.sh ${ROOTFS}/usr/bin/recoverbackup
+[ "$ARCH" = "arm64" ] && is64="-64"
+cp -a package_files/bootargs/bootargs4-${bootargs}${is64}.bin ${ROOTFS}/usr/bin/bootargs4.bin
+cp -a package_files/bootargs/emmc_bootargs-${bootargs}${is64}.txt ${ROOTFS}/etc/bootargs_input.txt
+chmod 777 ${ROOTFS}/etc/bootargs_input.txt
+cp -a package_files/bootargs/recoverbackup_${ARCH} ${ROOTFS}/usr/bin/recoverbackup
 chmod 777 ${ROOTFS}/usr/bin/recoverbackup
 echo "hi3798$bootargs" > ${ROOTFS}/etc/hostname
