@@ -173,7 +173,7 @@
                                         <div class="intro1">
                                             <ul>
                                                 <li><strong>芯片型号 : </strong><?php echo $chipname ?> </li>  
-                                                <li><strong>内网IP : </strong>&nbsp;<?php echo $lanip ?>&nbsp;    <strong>外网网址 : </strong><a href="https://nas-xxxxx.any168.net">https://nas-xxxxx.any168.net【此功能只限专业版用户使用】</a></li>
+                                                <li><strong>内网IP : </strong>&nbsp;<?php echo $lanip ?>&nbsp;    <strong>外网网址 : </strong><a href="https://nas-3d4bf.any168.net">https://nas-3d4bf.any168.net【此功能只限专业版用户使用】</a></li>
                                                 <li><strong>系统版本号 : </strong><?php echo $nasversion ?>   </li>
 												<li><strong>初始默认登陆账号和密码 :</strong>root 1234 </li>
                                                 <li><strong>作者 : </strong> <a href="https://histb.com" target="_blank">神雕@histb.com</a></li>
@@ -331,7 +331,7 @@
 
                         <h4>服务器采用 FRP 开源软件进行内网穿透</h4>
 
-                        <p>已经搭建了一个位于国外的服务器作为 FRP 的服务端, 并自动分配给盒子一个随机的二级域名, 你可以轻松的在外面访问盒子首页<strong>本盒子外网网址 : </strong><a href="https://nas-xxxxx.any168.net">https://nas-xxxxx.any168.net</a>【此功能只限专业版用户使用】</p>
+                        <p>已经搭建了一个位于国外的服务器作为 FRP 的服务端, 并自动分配给盒子一个随机的二级域名, 你可以轻松的在外面访问盒子首页<strong>本盒子外网网址 : </strong><a href="https://nas-3d4bf.any168.net">https://nas-3d4bf.any168.net</a>【此功能只限专业版用户使用】</p>
 
                         <a href="http://frp.ecoo.ga" class="btn btn-primary">服务器详情</a> <a href="https://bbs.histb.com" class="btn btn-info">分享与答疑</a>
 
@@ -1049,12 +1049,19 @@
 
                         <div class="row">
                             <div class="col-md-12">
-
-                                <p>内容待定
+                                <p>内网穿透即在局域网外部通过穿透技术直接访问局域网的设备，
+                                <br>目前现有穿透技术有很多种，其中有的需要限定端口，有的流量必须通过服务器转发。
+                                <br>本系统使用的穿透技术均无上述限制：
+                                <br>1、<b>可以访问穿透设备的所有端口</b>。
+                                <br>&nbsp;&nbsp;&emsp;只需要使用穿透技术分配的专用IP地址，就能如同在局域网访问一样，互相访问穿透设备的所有端口，无任何限制。
+                                <br>2、<b>使用P2P的点对点通讯技术</b>。
+                                <br>&nbsp;&nbsp;&emsp;客户端之间通讯默认使用直连通讯，无需经过服务器转发，大大加快设备间的传输速度，降低延迟，同时不受服务器限制传输带宽。
+                                <br>3、<b>实现局域网打通</b>。
+                                <br>&nbsp;&nbsp;&emsp;即把客户端所在的局域网全部打通，其他局域网的客户端均可通过该被打通的客户端访问该客户端所在局域网的其他设备，而不仅仅是客户端设备，从此各地的局域网对彼此开放，实现互联互通。
+                                <br>&nbsp;&nbsp;&emsp;如需其他客户端所在局域网的设备也能如同客户端一样访问被穿透的客户端局域网，则需要在各自的网络路由器上设置<b>静态路由</b>。
                                 </p>
-
+                                <a href="p2p.html" class="btn btn-primary" target="_blank">开通教程</a>
                                 <hr>
-
                             </div>
                         </div>
                         <!-- end row -->
