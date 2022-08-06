@@ -17,6 +17,7 @@ check_dockerimagep(){
   else
     install_dockerimagep
     echo 123 > /etc/pdinstalled
+    echo "容器管理工具已经安装，浏览器打开 http://$local_ip:9000 进入设置"
   fi
 }
 install_dockerimagep(){
@@ -38,4 +39,4 @@ else
   check_dockerimagep
 fi
 sleep 1
-echo "容器管理工具已经安装，浏览器打开 http://$local_ip:9000 进入设置"
+echo "如有疑问，请访问 https://bbs.histb.com 获得相关教程"

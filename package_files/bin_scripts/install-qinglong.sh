@@ -17,6 +17,7 @@ check_dockerimage(){
   else
     install_dockerimage
     echo 123 > /etc/qlinstalled
+    echo "青龙面板已经安装，首次安装请1分钟后浏览器打开 http://$local_ip:5700 进入设置"
   fi
 }
 install_dockerimage(){
@@ -39,4 +40,4 @@ else
   check_dockerimage
 fi
 sleep 1
-echo "青龙面板已经安装，首次安装请1分钟后浏览器打开 http://$local_ip:5700 进入设置"
+echo "如有疑问，请访问 https://bbs.histb.com 获得相关教程"

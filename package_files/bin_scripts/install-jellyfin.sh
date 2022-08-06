@@ -11,7 +11,7 @@ if [ ! -f "/etc/debian_version" ]; then
 fi
 
 while :; do
-read -p "请输入 config 映射目录的绝对路径" config_path
+read -p "请输入安装config目录的绝对路径" config_path
 if [[ ! -d $config_path ]] || [[ "$config_path" == "" ]]; then
 	echo "路径" $config_path "不存在，请重新输入"
 else
@@ -20,7 +20,7 @@ fi
 done
 
 while :; do
-read -p "请输入 media 映射目录的绝对路径" media_path
+read -p "请输入安装media目录的绝对路径" media_path
 if [[ ! -d $media_path ]] || [[ "$media_path" == "" ]]; then
 	echo "路径" $media_path "不存在，请重新输入"
 else
@@ -52,7 +52,7 @@ docker run -dit \
 
 local_ip=$(ifconfig eth0 | grep '\<inet\>'| grep -v '127.0.0.1' | awk '{ print $2}' | awk 'NR==1')
 if [ -x "$(command -v docker)" ]; then
-	echo "docker已安装，请不要重复安装." >&2
+	echo "docker已安装，不再重复安装." >&2
 	check_dockerimage
 else
 	apt update && apt install docker.io -y
