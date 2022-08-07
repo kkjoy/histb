@@ -48,6 +48,15 @@ umount $TMPFS 2> /dev/null ; rm -r "$TMPFS" 2> /dev/null ; mkdir -p $TMPFS ; sle
 mount $backup_img $TMPFS
 cp $gz_file $TMPFS/backup-${model}${arch_suffix}.gz
 sync
+
+echo
+echo "Packing ext4 for backup partition"
+mkdir backup
+cp $gz_file backup/backup-${model}${arch_suffix}.gz
+sync
+make_ext4fs -l 512M -s Ubuntu_backup.ext4 backup/
+echo "Packed $gz_file to Ubuntu_backup.ext4"
+
 umount $TMPFS 2> /dev/null ; rm -r "$TMPFS" 2> /dev/null
 e2fsck -p -f $backup_img
 

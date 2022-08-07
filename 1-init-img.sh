@@ -95,6 +95,7 @@ IMG_FILE="ubuntu-base-${RELEASE}-base-${ARCH}.tar.gz"
 IMG_URL="https://cdimage.ubuntu.com/ubuntu-base/releases/${RELEASE}/release"
 
 mkdir -p downloads && cd downloads
+apt update && apt install android-sdk-ext4-utils -y
 
 if [ "$(get_sha256 -c ${IMG_URL}/SHA256SUMS ${IMG_FILE})" != "$(get_sha256 -l ${IMG_FILE})" ]
 then

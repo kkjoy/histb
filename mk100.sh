@@ -1,5 +1,6 @@
 #!/bin/bash
 
+apt update && apt install android-sdk-ext4-utils -y
 ./0-clean.sh
 ./1-init-img.sh -mv100
 ./2-chroot.sh
