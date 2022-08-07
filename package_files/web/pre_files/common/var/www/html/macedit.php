@@ -3,9 +3,14 @@
 text-align: center;
 }
 </style>
-<h1>网口MAC地址修改</h1>
+<h1>网口 MAC 地址修改</h1>
+<h3>注意事项</h3>
+<p>请务必按照盒子背后的原有 MAC 地址来修改
+<br>比如你的盒子背面标签地址为 50:01:6B:D4:E2:26
+<br>则在下面框中输入 50016BD4E226 ，点击提交
+</p>
 <form action="macedit.php" class="layui-form"  method="POST" accept-charset="GBK">
-   请输入：<input type="text" name="mac" value="" style="width:250px" maxlength="12" placeholder="请输入连续字符,例：112233445566">
+   请输入：<input type="text" name="mac" value="" style="width:250px" maxlength="12" placeholder="请输入连续字符,例：50016BD4E226">
    
    <input type="submit"  name="submit" value="提交">
 </form>
