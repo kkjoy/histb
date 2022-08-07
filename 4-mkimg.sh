@@ -41,26 +41,16 @@ echo
 echo "Packed Firmware: $gz_file"
 echo "Packed Firmware Size: $(du -h $gz_file 2> /dev/null | awk '{print $1}')"
 
-backup_img="${file_prefix}-${timestamp}-backup-MD5.img"
-dd if=/dev/zero of=$backup_img count=1 obs=1 seek=536870400
-mkfs.ext2 $backup_img
-umount $TMPFS 2> /dev/null ; rm -r "$TMPFS" 2> /dev/null ; mkdir -p $TMPFS ; sleep 1
-mount $backup_img $TMPFS
-cp $gz_file $TMPFS/backup-${model}${arch_suffix}.gz
-sync
-
 echo
 echo "Packing ext4 for backup partition"
 mkdir backup
+backup_ext4="${file_prefix}-${timestamp}-backup-MD5.ext4"
 cp $gz_file backup/backup-${model}${arch_suffix}.gz
 sync
-make_ext4fs -l 512M -s Ubuntu_backup.ext4 backup/
-echo "Packed $gz_file to Ubuntu_backup.ext4"
-
-umount $TMPFS 2> /dev/null ; rm -r "$TMPFS" 2> /dev/null
-e2fsck -p -f $backup_img
+make_ext4fs -l 512M -s $backup_ext4 backup/
 
 echo "Calculating MD5 for backup Firmware ..."
-old_backup_img=$backup_img
-backup_img="${backup_img/MD5/$(md5sum ${backup_img} 2> /dev/null| cut -c1-5)}"
-mv -f "${old_backup_img}" "${backup_img}"
+old_backup_ext4=$backup_ext4
+backup_ext4="${backup_ext4/MD5/$(md5sum ${backup_ext4} 2> /dev/null| cut -c1-5)}"
+mv -f "${old_backup_ext4}" "${backup_ext4}"
+rm -r backup 2> /dev/null
