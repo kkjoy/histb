@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<title>P2P 内网穿透组网开通教程</title>
+<style>
+    body {
+        width: 70em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+
+<header>
+	<h1>P2P 内网穿透组网开通教程</h1>
+</header>
+
+<h2>开通客户端之间互相穿透方法（有偿服务）</h2>
+<p>1、联系微信付费索取客户端key（10元5个客户端，另外如需开通局域网的全网穿透需另付，10元一个局域网）</p>
+<br/>&nbsp;&nbsp;&emsp;其中:</p>
+<ul>
+<li>4个客户端免登录用key(支持盒子的NAS系统和windows)</li>
+<li>1个安卓客户端，需安装apk提供机器码后方可注册，具体见下方安卓客户端教程）</li>
+</ul>
+<p>&nbsp;&nbsp;&emsp;<b>声明：除盒子NAS系统外的其他客户端登录遇到问题不在本服务范围，但本教程除了盒子的NAS系统外提供了Windows、安卓的登录教程，请自行参考。另外其他版本的linux可参考windows的登录命令自行解决</b></P>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-link.jpg" />
+<br/>2、通过ssh或ttyd进入盒子命令行
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-ssh.png" /><br/>
+<br/>3、输入命令登录服务器：<pre>&nbsp;&nbsp;install-tailscale -key <索取到的key></pre>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-install.png" /><br/>
+<br/>4、通过命令查看所有客户端，命令输出的第一个客户端即为本机客户端：<pre>&nbsp;&nbsp;tailscale status</pre>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-status.png" /><br/>
+<br/>5、测试对方客户端是否联通（登录两台以上客户端后测试）：<pre>&nbsp;&nbsp;ping -c 4 <上一步看到的对方ip></pre>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-ping.png" /><br/>
+<br/>6、备份
+<br/>&nbsp;&nbsp;&emsp;由于key为一次性使用，刷完机重新使用key登录会失效，所以提供备份命令进行备份：<pre>&nbsp;&nbsp;install-tailscale -save</pre>
+<br/>&nbsp;&nbsp;&emsp;备份文件会保存至 /home/ubuntu/files 下，然后通过网盘下载（http://盒子ip/files/home/），务必及时下载以防止丢失。
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-save.png" /><br/>
+<br/>7、刷机后的恢复命令：
+<pre>&nbsp;&nbsp;install-tailscale -restore <备份文件路径></pre>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-restore.png" /><br/>
+</p>
+
+<h2>开通局域网穿透方法（有偿服务，10元开通一个局域网）</h2>
+<p>由于各个windows和安卓环境不一，建议仅开通linux客户端所在，并且开通后<b>请勿更改局域网IP的网段或移动到其他局域网使用</b>，否则容易造成穿透路由网段不一样而失效</p>
+<p><b>局域网穿透前的准备：</b>
+<br/>&nbsp;&nbsp;&emsp;确保被穿透的局域网和其他客户端局域网的IP网段不一致
+<br/>&nbsp;&nbsp;&emsp;比如被穿透的局域网IP段是 192.168.1.x ，那么其他客户端所在局域网的网段不能与之相同，否则其他客户端开通穿透后默认会通过穿透的路由访问这个IP网段，容易导致本地的访问失效，甚至无法联网。
+</p>
+<p><b>开通步骤：</b></p>
+<p>1、在需要开通所在局域网穿透的客户端上通过命令查看客户端id：
+<pre>&nbsp;&nbsp;tailscale status| awk '{print $2}'|head -1</pre>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-id.png" /><br/>
+<br/>2、联系微信提供上述你自己的id
+<br/>3、等待微信通知开通成功，开通成功后大约一分钟内路由会从服务器下发到客户端
+<br/>4、在其他客户端上测试局域网穿透
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-route.png" /><br/>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-jump.png" /><br/>
+<br/>5、此时你账户下的其他所有客户端盒子均可访问此盒子所在局域网，但是<b>仅限客户端所在设备</b>。
+<br/>6、如需其他客户端所在局域网的其他设备也能如同客户端一样访问此盒子所在的局域网，则需要在各自的网络路由器上设置<b>静态路由</b>，静态路由的网关需指向客户端盒子的局域网IP，这样该局域网内的设备才能通过同一局域网的客户端到达对方局域网。因为各家路由器型号不一，添加静态路由的具体方法请自行查询，本教程提供Openwrt的静态路由设置方法以供参考：
+<br/><br/>&nbsp;&nbsp;&emsp;1)、点击添加静态路由
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-openwrt-1.png" /><br/>
+<br/>&nbsp;&nbsp;&emsp;2)、填写静态路由信息
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-openwrt-2.png" /><br/>
+<br/>&nbsp;&nbsp;&emsp;3)、保存并应用
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-openwrt-3.png" /><br/>
+</p>
+
+<h2>Windows 客户端安装方法</h2>
+<p>1、下载客户端安装程序：<a href="https://dl.ecoo.top:2096/update/soft_init/p2p-client-setup-1.28.0.exe">下载链接</a>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-windows-icon.png" /><br/>
+<br/>2、安装（如有防火墙阻挡请自行设置防火墙放行）
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-windows-install-1.png" /><br/>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-windows-install-2.png" /><br/>
+<br/>3、安装注册表：<a href="https://p2p.ecoo.top:9191/windows/tailscale.reg" target="_blank" download="p2p-client-setup-1.28.0.exe">右击另存</a>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-windows-reg-icon.png" /><br/>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-windows-reg-install-1.png" /><br/>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-windows-reg-install-2.png" /><br/>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-windows-reg-install-3.png" /><br/>
+<br/>4、进入程序安装目录，64位系统为 C:\Program Files (x86)\Tailscale IPN，32位系统为 C:\Program Files\Tailscale IPN
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-windows-enter-path.png" /><br/>
+<br/>5、在此目录键盘按住Shift同时鼠标右击，选择“在此处打开命令提示符”
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-windows-cmd.png" /><br/>
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-windows-cmd-2.png" /><br/>
+<br/>6、使用命令输入未使用的key来登录服务器：<pre>&nbsp;&nbsp;tailscale up --login-server=https://p2p.ecoo.top:9191 --accept-routes=true --accept-dns=false --reset --authkey <未使用的key></pre>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-windows-login.png" /><br/>
+
+
+<h2>安卓客户端安装方法(由于安卓环境的限制，目前仅支持服务器流量转发，不支持客户端直连)</h2>
+<p>1、下载安卓apk并安装：<a href="https://dl.ecoo.top:2096/update/soft_init/p2p-client-android.apk">下载链接</a>
+<br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-android-icon.png" /><br/>
+<br>2、点击右上角菜单按钮
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-android-1.jpg" /><br/>
+<br>3、点击登录服务器按钮
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-android-2.jpg" /><br/>
+<br>4、填写服务器地址并点击保存按钮
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-android-3.jpg" /><br/>
+<br>5、点击登录按钮进行登录
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-android-4.jpg" /><br/>
+<br>6、客户端自动调用浏览器进行登录，把浏览器中红框内的本机ID复制下来，并且和盒子的账户ID（user-xxxxxx）一起并发送给到微信联系人等待开通
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-android-5.jpg" /><br/>
+<br>7、点击确定允许创建连接
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-android-6.jpg" /><br/>
+<br>8、开通成功
+<br/><br/>&nbsp;&nbsp;&emsp;<img src="/img/p2p/p2p-android-7.jpg" /><br/>
+</p>
+
+<footer>
+	版权 © <span class="year">2022</span> <a href="http://www.ecoo.top/">www.ecoo.top</a>
+</footer>
+
+</body>
+</html>

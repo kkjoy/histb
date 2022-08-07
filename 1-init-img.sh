@@ -49,7 +49,7 @@ if [ -z "$model" ]; then
         3. mv300
         "
         while :; do
-        read -p "你想要定制哪个版本？ " CHOOSE
+        read -p "浣犳兂瑕佸畾鍒跺摢涓増鏈紵 " CHOOSE
         case $CHOOSE in
             1)
                 model="mv100"
@@ -71,7 +71,7 @@ if [ -z "$model" ]; then
         2. mv300
         "
         while :; do
-        read -p "你想要定制哪个版本？ " CHOOSE
+        read -p "浣犳兂瑕佸畾鍒跺摢涓増鏈紵 " CHOOSE
         case $CHOOSE in
             1)
                 model="mv200"
@@ -95,6 +95,7 @@ IMG_FILE="ubuntu-base-${RELEASE}-base-${ARCH}.tar.gz"
 IMG_URL="https://cdimage.ubuntu.com/ubuntu-base/releases/${RELEASE}/release"
 
 mkdir -p downloads && cd downloads
+apt update && apt install android-sdk-ext4-utils -y
 
 if [ "$(get_sha256 -c ${IMG_URL}/SHA256SUMS ${IMG_FILE})" != "$(get_sha256 -l ${IMG_FILE})" ]
 then

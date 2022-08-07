@@ -127,8 +127,8 @@
                         <ul class="nav">
                             <li><a href="#line1">开始使用</a></li>
                             <li><a href="#line2">管理服务器文档</a></li>
-                            <li><a href="#line3">内网穿透的场景</a></li>
-                            <li><a href="#line4">Socks5 服务器</a></li>
+                            <li><a href="#line3">FRP 内网穿透的使用</a></li>
+                            <li><a href="#line12">P2P 内网穿透组网有偿服务</a></li>
                             <li><a href="#line5">创建个人博客或家庭公告栏</a></li>
                             <li><a href="#line6">安装和设置网络共享</a></li>
                             <li><a href="#line7">其他功能与技巧</a>
@@ -148,8 +148,9 @@
                             <li><a href="#line9">直链下载与 BT 种子下载</a></li>
                             <li><a href="#line10">Docker 容器使用基础教程</a></li>
                             <li><a href="#line11">个人网盘 h5ai</a></li>
-                            <li><a href="#line12">版本更新日志 (Changelog)</a></li>
-                            <li><a href="#line13">著作版权声明</a></li>
+                            <li><a href="#line4">Socks5 服务器使用</a></li>
+                            <li><a href="#line13">版本更新日志 (Changelog)</a></li>
+                            <li><a href="#line14">著作版权声明</a></li>
                         </ul>
                     </nav >
                 </div>
@@ -172,7 +173,7 @@
                                         <div class="intro1">
                                             <ul>
                                                 <li><strong>芯片型号 : </strong><?php echo $chipname ?> </li>  
-                                                <li><strong>内网IP : </strong>&nbsp;<?php echo $lanip ?>&nbsp;    <strong>外网网址 : </strong><a href="https://nas-xxxxx.any168.net">https://nas-xxxxx.any168.net</a></li>
+                                                <li><strong>内网IP : </strong>&nbsp;<?php echo $lanip ?>&nbsp;    <strong>外网网址 : </strong><a href="https://nas-xxxxx.any168.net">https://nas-xxxxx.any168.net【此功能只限专业版用户使用】</a></li>
                                                 <li><strong>系统版本号 : </strong><?php echo $nasversion ?>   </li>
 												<li><strong>初始默认登陆账号和密码 :</strong>root 1234 </li>
                                                 <li><strong>作者 : </strong> <a href="https://histb.com" target="_blank">神雕@histb.com</a></li>
@@ -194,7 +195,7 @@
                                             <h4>常用功能按钮</h4>
                                             <p>点击打开进行日常维护和使用.</p>
                                             <ol>
-                                                <li><button type="button"><a target="_blank" href="http://<?php echo $lanip ?>:7681">管理终端</a></button>    <button type="button" onclick="disp_alert()">研发者论坛</button>    <button type="button" onclick="dl_alert()">系统更新</button>    <button type="button"><a target="_blank" href="/files">网盘系统</a></button>    <button type="button"><a target="_blank" href="/blog">个人博客</a></button>    <button type="button"><a target="_blank" href="http://<?php echo $lanip ?>:9091">BT下载器</a></button>     <button type="button"><a target="_blank" href="/ariang">直链下载器</a></button>    <button type="button"><a target="_blank" href="/index2.html">旧版主页</a></button></li>
+                                                <li><button type="button"><a target="_blank" href="http://<?php echo $lanip ?>:7681">管理终端</a></button>    <button type="button" onclick="disp_alert()">研发者论坛</button>    <button type="button" onclick="dl_alert()">系统更新</button>    <button type="button"><a target="_blank" href="/files">网盘系统</a></button>    <button type="button"><a target="_blank" href="/blog">个人博客</a></button>    <button type="button"><a target="_blank" href="http://<?php echo $lanip ?>:9091">BT下载器</a></button>     <button type="button"><a target="_blank" href="/ariang">直链下载器</a></button></li>
                                             </ol>
                                             <div class="intro2 clearfix">
                                                 <p><i class="fa fa-exclamation-triangle"></i> 如遇到不慎操作失误或者安装了自己不清楚的软件, 可以使用还原备份系统的命令: <a style="background:#000; color:#fff"> &nbsp; recoverbackup &nbsp; </a>
@@ -215,7 +216,7 @@
 
                         <div class="row">
                             <div class="col-md-12 left-align">
-                                <h2 class="dark-text">开始使用 <hr></h2>
+                                <h2 class="dark-text">开始使用 【我能做什么】<hr></h2>
                             </div>
                             <!-- end col -->
                         </div>
@@ -224,9 +225,21 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p>建议使用 Edge、Chrome、火狐浏览器等访问和管理机顶盒 <a target="_blank" href="http://<?php echo $lanip ?>:7681">管理终端</a>, 或者使用 Windows 10 的命令提示符、<acronym title="没有？百度百度!">SSH终端管理器</acronym>等登陆后台</p>
+				 <h4>我能做什么</h4>
+                                <p>1. linux服务器，可以作为你学习linux系统的一个样板
+                                <br>2. 盒子支持 docker 程序，你可以使用 docker 扩展你的需求
+                                <br>3. 用盒子作为自己家用的文件存储器，文件共享器
+                                <br>4. 可以把盒子作为内网穿透跳板机，或 p2p 把家里的设备跟异地的设备网络组成同一个内网
+                                <br>5. 可以用盒子的博客系统记录你学习和生活的点点滴滴，既能分享，又能保留历史记忆
+                                <br>6. 可以用盒子播放影音，视频，并推送到局域网内的电视
+                                <br>7. 可以用盒子系统自带的插件作为一个下载机，随时随地下载并存储在本地
+                                <br>8. 可以用盒子做个人网站个人数据库前端或后端
+                                <br>9. 可以做自己的 git 仓库，协助你建立或转存个人或群体仓库
+                                <br>10. 可以建立自己的 socks 网络中转，安全地科学使用网络。
+                                <br>11. 还可以做更多事情，等待你的发掘。或加入用户微信群交流，或加入社区交流。
 
+                                </p>				 
                                 <h4>常用的 Linux 命令</h4>
-
                                 <pre class="brush: html; highlight: [2,4]">
 					ssh root@192.168.x.x			终端登陆服务器
 					df -H							查看磁盘使用详情	
@@ -239,7 +252,7 @@
 					
                                 </pre>
 
-                                <p>盒子内置有以下几个基本功能的软件安装小白脚本, 直接输入以下命令即可自动安装并自动配置, 即装即用</p>
+                                <p>盒子内置有以下几个基本功能的软件安装小白脚本, 直接输入以下命令即可自动安装并自动配置, 即装即用。部分脚本安装位置在 /opt/ 路径下，如有需要，请自行更改脚本。</p>
 
                                 <pre class="brush: html">
 		                    	install-samba.sh		安装局域网共享
@@ -294,15 +307,7 @@
 
                         <a href="ftp.html" class="btn btn-primary">操作教程</a> <a href="https://bbs.histb.com" class="btn btn-info">分享和答疑</a>
                         <hr>
-         <!--                  <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="media">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/snFzbPm_RUE" frameborder="0" allowfullscreen></iframe>  
-                                </div>
-                            </div>
 
-                        </div>  
- 	-->
                     </section>
                     <!-- end section -->
 
@@ -310,7 +315,7 @@
 
                         <div class="row">
                             <div class="col-md-12 left-align">
-                                <h2 class="dark-text">内网穿透的使用场景 <hr></h2>
+                                <h2 class="dark-text">FRP 内网穿透的使用 <hr></h2>
                             </div>
                             <!-- end col -->
                         </div>
@@ -318,7 +323,7 @@
 
                         <h4>服务器采用 FRP 开源软件进行内网穿透</h4>
 
-                        <p>已经搭建了一个位于国外的服务器作为 FRP 的服务端, 并自动分配给盒子一个随机的二级域名, 你可以轻松的在外面访问盒子首页<strong>本盒子外网网址 : </strong><a href="https://nas-xxxxx.any168.net">https://nas-xxxxx.any168.net</a></p>
+                        <p>已经搭建了一个位于国外的服务器作为 FRP 的服务端, 并自动分配给盒子一个随机的二级域名, 你可以轻松的在外面访问盒子首页<strong>本盒子外网网址 : </strong><a href="https://nas-xxxxx.any168.net">https://nas-xxxxx.any168.net</a>【此功能只限专业版用户使用】</p>
 
                         <a href="http://frp.ecoo.ga" class="btn btn-primary">服务器详情</a> <a href="https://bbs.histb.com" class="btn btn-info">分享与答疑</a>
 
@@ -327,7 +332,7 @@
                         <h4>使用场景</h4>
 
                         <p>修改和配置 /etc/frp/frpc.ini 文档</p>
-                        <p>把盒子放在家里, 公司, 或学校, 让你的盒子变身为一个比花生棒更加强大的跳板机, 没错, 也是白嫖的!</p>
+                        <p>把盒子放在家里, 公司, 或学校, 让你的盒子变身为一个比花生棒更加强大的跳板机!</p>
                         <pre class="brush: html">
                         # /etc/frp/frpc.ini
                         [common]
@@ -379,21 +384,7 @@
                         systemctl restart frpc		#重启服务
                         </pre>
                         <hr>
-        <!--                 <div class="row">
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <iframe width="560" height="315" src="http://www.any168.net" frameborder="0" allowfullscreen></iframe>
-                                </div>
 
-                            </div>
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <iframe width="560" height="315" src="#" frameborder="0" allowfullscreen></iframe>
-                                </div>
-
-                            </div>
-                        </div>
-	 -->
                     </section>
                     <!-- end section -->
 
@@ -483,8 +474,9 @@
 			     把数据库文档移出来到U盘指定目录并重命名为 myblog.db
 			     </pre>
 			     
-			     	<p>下次重新安装博客时, 点击 "我准备好了, 开始下一步", 数据库文件路径输入 /mnt/sda1/blog-data/myblog.db 然后无需设置密码直接点击 "确认, 开始安装", 然后点击 "使用原数据" 这样就把数据还原了, 打开还是原来一样的所有文章
-			     	<br>注意: 如果你常常使用的是外网网址登陆博客, 请在后台设置里填写正确的外网网址</p>
+			     	<p>下次重新安装博客时, 点击 "我准备好了, 开始下一步", 数据库文件路径输入 /mnt/sda1/blog-data/myblog.db 然后无需设置密码直接点击 "确认, 开始安装", 然后点击 "使用原数据" 这样就把数据还原了, 打开还是原来一样的所有文章。
+			     	<br>注意: 如果你常常使用的是外网网址登陆博客, 请在后台设置里填写正确的外网网址。
+			     	<br>否则首页将会造成js错乱而影响访问。（可用内网 IP 地址登陆去修改）</p>
                             </div>
 
 
@@ -582,8 +574,8 @@
                                 <h4 id="line7_2">更改盒子网口 MAC 地址 - </h4>
                                 <p>
                                 点击链接进入修改页面：<button type="button"><a target="_blank" href="macedit.php">网口 MAC 修改</a></button>
-                                <br>注意：你改的mac地址必须符合16进制格式！
-                                <br>只能从 0123456789ABCDEF 这16个数字与字母中选。
+                                <br>注意：建议你按照盒子背后标签的 MAC 地址来修改
+                                <br>否则将可能出现随机现象造成 IP 地址变动
                                 </p>
                             </div>
                             <!-- end col -->
@@ -1024,11 +1016,43 @@
                     </section>
                     <!-- end section -->
 
-                    <section id="line12" class="section">
+		<section id="line12" class="section">
 
                         <div class="row">
                             <div class="col-md-12 left-align">
-                                <h2 class="dark-text">Version History (Changelog) <hr></h2>
+                                <h2 class="dark-text">P2P 内网穿透组网有偿服务 <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>内网穿透即在局域网外部通过穿透技术直接访问局域网的设备，
+                                <br>目前现有穿透技术有很多种，其中有的需要限定端口，有的流量必须通过服务器转发。
+                                <br>本系统使用的穿透技术均无上述限制：
+                                <br>1、<b>可以访问穿透设备的所有端口</b>。
+                                <br>&nbsp;&nbsp;&emsp;只需要使用穿透技术分配的专用IP地址，就能如同在局域网访问一样，互相访问穿透设备的所有端口，无任何限制。
+                                <br>2、<b>使用P2P的点对点通讯技术</b>。
+                                <br>&nbsp;&nbsp;&emsp;客户端之间通讯默认使用直连通讯，无需经过服务器转发，大大加快设备间的传输速度，降低延迟，同时不受服务器限制传输带宽。
+                                <br>3、<b>实现局域网打通</b>。
+                                <br>&nbsp;&nbsp;&emsp;即把客户端所在的局域网全部打通，其他局域网的客户端均可通过该被打通的客户端访问该客户端所在局域网的其他设备，而不仅仅是客户端设备，从此各地的局域网对彼此开放，实现互联互通。
+                                <br>&nbsp;&nbsp;&emsp;如需其他客户端所在局域网的设备也能如同客户端一样访问被穿透的客户端局域网，则需要在各自的网络路由器上设置<b>静态路由</b>。
+                                </p>
+                                <a href="p2p.html" class="btn btn-primary" target="_blank">开通教程</a>
+                                <hr>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+                    
+                    <section id="line13" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">版本历史 (Changelog) <hr></h2>
                             </div>
                             <!-- end col -->
                         </div>
@@ -1037,11 +1061,11 @@
                         <div class="row">
                             <div class="col-md-12">
 
-                                <p>本操作系统基于 Ubuntu 20.04.4 LTS, 由 Teasiu 和 Hyy2001 定制</p>
+                                <p>本操作系统基于 Ubuntu 20.04.4 LTS, 神雕定制，Xjm,Hyy2001贡献 </p>
 
                                 <hr>
 
-                                <h4>Changelog</h4>
+                                <h4>更新日志</h4>
 				<iframe width="760" height="315" src="https://dl.ecoo.top:2096/changeslog.html" frameborder="0" allowfullscreen></iframe>
 
 
@@ -1052,7 +1076,7 @@
                     </section>
                     <!-- end section -->
 
-                    <section id="line13" class="section">
+                    <section id="line14" class="section">
 
                         <div class="row">
                             <div class="col-md-12 left-align">

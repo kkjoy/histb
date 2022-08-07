@@ -4,14 +4,14 @@
 apt-get update
 
 if [ ! -f "/usr/bin/docker" ]; then
-  echo "docker is to be intalled!"
+  echo "docker is to be install!"
   apt install -y docker.io lsof
 else
   echo "docker is already intalled!"
 fi
 
 if [ ! -f "/usr/local/bin/docker-compose" ]; then
-  echo "docker-compose is to be intalled!"
+  echo "docker-compose is to be install!"
   apt install -y docker-compose
 else
   echo "docker-compose is already intalled!"

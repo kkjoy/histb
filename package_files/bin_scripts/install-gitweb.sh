@@ -32,4 +32,5 @@ install_gitweb(){
 }
 local_ip=$(ifconfig eth0 | grep '\<inet\>'| grep -v '127.0.0.1' | awk '{ print $2}' | awk 'NR==1')
 check_gitweb
-
+sleep 1
+echo "如有疑问，请访问 https://bbs.histb.com 获得相关教程"
